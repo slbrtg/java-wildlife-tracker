@@ -39,6 +39,17 @@ public class SightingTest {
   }
 
   @Test
+  public void endangeredSave_insertsObjectIntoDatabase_Sighting() {
+    Animal testAnimal = new Animal("Deer");
+    testAnimal.save();
+    Sighting testSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery");
+    testSighting.endangeredSave();
+    assertEquals(testAnimal.getId(), Sighting.all().get(0).getendangeredAnimalId());
+
+    //assertEquals(0, Sighting.all().get(0).getAnimalId());
+  }
+
+  @Test
   public void all_returnsAllInstancesOfSighting_true() {
     Animal testAnimal = new Animal("Deer");
     testAnimal.save();

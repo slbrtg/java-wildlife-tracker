@@ -7,6 +7,7 @@ public class Sighting {
   private int animal_id;
   private String location;
   private String ranger_name;
+  private int endangered_animal_id;
   private int id;
 
   public Sighting(int animal_id, String location, String ranger_name) {
@@ -22,6 +23,10 @@ public class Sighting {
 
   public int getAnimalId() {
     return animal_id;
+  }
+
+  public int getendangeredAnimalId() {
+    return endangered_animal_id;
   }
 
   public String getLocation() {
@@ -49,6 +54,19 @@ public class Sighting {
         .addParameter("animal_id", this.animal_id)
         .addParameter("location", this.location)
         .addParameter("ranger_name", this.ranger_name)
+        .throwOnMappingFailure(false)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
+  public void endangeredSave() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO sightings (location, ranger_name, endangered_animal_id) VALUES (:location, :ranger_name, :endangered_animal_id);";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("location", this.location)
+        .addParameter("ranger_name", this.ranger_name)
+        .addParameter("endangered_animal_id", this.animal_id)
         .throwOnMappingFailure(false)
         .executeUpdate()
         .getKey();

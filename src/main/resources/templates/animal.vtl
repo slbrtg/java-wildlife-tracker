@@ -7,8 +7,14 @@
   <p>To report a sighting, please visit the <a href="/">home page</a>.</p>
 #else
   #foreach($sighting in $animal.getSightings())
-    Location: $sighting.getLocation()
-    Reported by: $sighting.getRangerName()
-    ID: >$sighting.getId()
+    <p>Location: $sighting.getLocation()</p>
+    <p>Reported by: $sighting.getRangerName()</p></p>
+    <p>ID: >$sighting.getId()</p>
   #end
 #end
+<div class="button-grid">
+  <a href="/animal/$animal.getId()/update"><button class="btn btn-warning" type="button" name="button">Update</button></a>
+  <form action="/animal/$animal.getId()/delete" method="post">
+    <button class="btn btn-danger" type="submit" name="button">Delete</button>
+  </form>
+</div>

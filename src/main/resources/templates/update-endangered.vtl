@@ -1,0 +1,19 @@
+<h1>Update information regarding the animal and sighting</h1>
+<form action="/endangered_animal/$endangeredAnimal.getId()/update" method="post">
+  <label for="names">Animal species</label>
+    <input type="text" name="name" value="$endangeredAnimal.getName()">
+    <label>Health</label>
+    <select name="health">
+      <option>Ill</option>
+      <option>Okay</option>
+      <option>Healthy</option>
+    </select>
+    <label>Age</label>
+    <select name="age">
+      <option>Newborn</option>
+      <option>Young</option>
+      <option>Adult</option>
+    </select>
+
+    <button type="submit">Update Animal</button>
+</form>

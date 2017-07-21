@@ -72,6 +72,17 @@ public class EndangeredAnimal {
     }
   }
 
+  public void updateName(String name) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE endangered_animals SET name=:name WHERE id=:id;";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .addParameter("name", name)
+        .executeUpdate();
+    }
+  }
+
+
   public void updateHealth(String health) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE endangered_animals SET health=:health WHERE id=:id;";
@@ -94,11 +105,27 @@ public class EndangeredAnimal {
 
   public List<Sighting> getSightings() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM sightings WHERE animal_id=:id;";
+      String sql = "SELECT * FROM sightings WHERE endangered_animal_id=:id;";
         List<Sighting> sightings = con.createQuery(sql)
           .addParameter("id", id)
           .executeAndFetch(Sighting.class);
       return sightings;
+    }
+  }
+
+  public void delete(){
+    try(Connection con = DB.sql2o.open()){
+      String sql = "DELETE FROM endangered_animals WHERE id=:id;";
+      con.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
+
+    try(Connection con = DB.sql2o.open()){
+      String sql = "DELETE FROM sightings WHERE endangered_animal_id=:id;";
+      con.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeUpdate();
     }
   }
 

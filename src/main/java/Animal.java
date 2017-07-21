@@ -74,6 +74,13 @@ public class Animal {
         .addParameter("id", id)
         .executeUpdate();
     }
+
+    try(Connection con = DB.sql2o.open()){
+      String sql = "DELETE FROM sightings WHERE animal_id=:id;";
+      con.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
   }
 
   public List<Sighting> getSightings() {

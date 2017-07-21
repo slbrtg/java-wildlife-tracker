@@ -1,0 +1,7 @@
+<h1>Update information regarding the animal and sighting</h1>
+<form action="/animal/$animal.getId()/update" method="post">
+  <label for="names">Animal species</label>
+    <input type="text" name="name" value="$animal.getName()">
+
+    <button type="submit">Update Animal</button>
+</form>
