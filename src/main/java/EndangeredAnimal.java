@@ -2,9 +2,8 @@ import org.sql2o.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EndangeredAnimal {
-  public String name;
-  public int id;
+public class EndangeredAnimal extends AnimalAbstract {
+
   public boolean endangered;
   private String health;
   private String age;
@@ -22,14 +21,6 @@ public class EndangeredAnimal {
 
   public String getAge() {
     return age;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public int getId() {
-    return id;
   }
 
   @Override
