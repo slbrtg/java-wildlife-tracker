@@ -1,18 +1,29 @@
 import org.sql2o.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 public class EndangeredAnimal extends AnimalAbstract {
 
   public boolean endangered;
   private String health;
   private String age;
+  public static final List<String> HEALTH_OPTIONS = Arrays.asList("ill", "ok", "healthy");
+  public static final List<String> AGE_OPTIONS = Arrays.asList("newborn", "young", "adult");
 
   public EndangeredAnimal(String name, String health, String age) {
     this.name = name;
     this.id = id;
     this.health = health;
     this.age = age;
+  }
+
+  public static String getHealthOption(int x){
+    return EndangeredAnimal.HEALTH_OPTIONS.get(x);
+  }
+
+  public static String getAgeOption(int x){
+    return EndangeredAnimal.AGE_OPTIONS.get(x);
   }
 
   public String getHealth() {

@@ -9,14 +9,6 @@ public class Animal extends AnimalAbstract {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public int getId() {
-    return id;
-  }
-
   @Override
   public boolean equals(Object otherAnimal) {
     if(!(otherAnimal instanceof Animal)) {
