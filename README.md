@@ -16,6 +16,8 @@ The Forest Service is considering a proposal from a timber company to clearcut a
 
 * Added an abstract class for the Animal and EndangeredAnimal to extend from.
 
+* Added a timestamp to the sightings table for when the animal was last seen
+
 ### Setup
 
 To create the necessary databases, launch postgres, then psql, and run the following commands:
